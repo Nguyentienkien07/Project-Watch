@@ -1,28 +1,28 @@
-import { useState, useEffect, useMemo } from 'react'
-import { Row, Col, Card, Checkbox } from 'antd'
-import { Link, generatePath } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
+import { useState, useEffect, useMemo } from "react";
+import { Row, Col, Card, Checkbox } from "antd";
+import { Link, generatePath } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
-import { getProductListRequest } from '../../../redux/slicers/product.slice'
-import { getCategoryListRequest } from '../../../redux/slicers/category.slice'
-import { ROUTES } from 'constants/routes'
+import { getProductListRequest } from "../../../redux/slicers/product.slice";
+import { getCategoryListRequest } from "../../../redux/slicers/category.slice";
+import { ROUTES } from "constants/routes";
 
-import * as S from './styles'
+import * as S from "./styles";
 
 function HomePage() {
-  const { productList } = useSelector((state) => state.product)
-  const { categoryList } = useSelector((state) => state.category)
+  const { productList } = useSelector((state) => state.product);
+  const { categoryList } = useSelector((state) => state.category);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProductListRequest())
-    dispatch(getCategoryListRequest())
-  }, [])
+    dispatch(getProductListRequest());
+    dispatch(getCategoryListRequest());
+  }, []);
 
   const handleChangeCategory = (values) => {
-    dispatch(getProductListRequest({ categoryId: values }))
-  }
+    dispatch(getProductListRequest({ categoryId: values }));
+  };
 
   const renderCategoryItems = useMemo(() => {
     return categoryList.data.map((item, index) => {
@@ -30,9 +30,9 @@ function HomePage() {
         <Checkbox key={item.id} value={item.id}>
           {item.name}
         </Checkbox>
-      )
-    })
-  }, [categoryList.data])
+      );
+    });
+  }, [categoryList.data]);
 
   const renderProductItems = useMemo(() => {
     return productList.data.map((item, index) => {
@@ -44,12 +44,13 @@ function HomePage() {
             </Card>
           </Link>
         </Col>
-      )
-    })
-  }, [productList.data])
+      );
+    });
+  }, [productList.data]);
 
   return (
     <S.HomeWrapper>
+      <h1>kien </h1>
       <Row gutter={[16, 16]}>
         <Col span={8}>
           <Card title="Bộ lọc" size="small">
@@ -63,7 +64,7 @@ function HomePage() {
         </Col>
       </Row>
     </S.HomeWrapper>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;
