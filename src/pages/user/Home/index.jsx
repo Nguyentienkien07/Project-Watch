@@ -50,7 +50,6 @@ function HomePage() {
 
   return (
     <S.HomeWrapper>
-      <h1>kien </h1>
       <Row gutter={[16, 16]}>
         <Col span={8}>
           <Card title="Bộ lọc" size="small">

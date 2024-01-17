@@ -3,53 +3,81 @@
   "products": [
     {
       "id": 1,
-      "name": "iPhone 15",
+      "name": "Hublot 1",
       "price": 25000000,
       "categoryId": 1
     },
     {
       "id": 2,
-      "name": "Samsung Galaxy S23",
+      "name": "Rolex 1",
       "price": 20000000,
       "categoryId": 2
     },
     {
       "id": 4,
-      "name": "iPhone 14",
+      "name": "Hublot 2",
       "price": 15000000,
       "categoryId": 1
     },
     {
       "id": 5,
-      "name": "iPhone 14 Pro",
+      "name": "Hublot 3",
       "price": 18000000,
       "categoryId": 1
     },
     {
       "id": 6,
-      "name": "iPhone 15 Pro",
+      "name": "Hublot 4",
       "price": 30000000,
       "categoryId": 1
     },
     {
       "id": 7,
-      "name": "iPhone 13",
+      "name": "Hublot 5",
       "price": 12000000,
       "categoryId": 1
+    },
+    {
+      "id": 8,
+      "name": "Casio 1",
+      "price": 12000000,
+      "categoryId": 3
+    },
+    {
+      "id": 9,
+      "name": "Rolex 2",
+      "price": 12000000,
+      "categoryId": 2
+    },
+    {
+      "id": 10,
+      "name": "Casio 2",
+      "price": 12000000,
+      "categoryId": 3
+    },
+    {
+      "id": 11,
+      "name": "Orient 1",
+      "price": 12000000,
+      "categoryId": 4
     }
   ],
   "categories": [
     {
       "id": 1,
-      "name": "Apple"
+      "name": "Hublot"
     },
     {
       "id": 2,
-      "name": "Samsung"
+      "name": "Rolex"
     },
     {
       "id": 3,
-      "name": "Xiaomi"
+      "name": "Casio"
+    },
+    {
+      "id": 4,
+      "name": "Orient"
     }
   ],
   "tasks": []
