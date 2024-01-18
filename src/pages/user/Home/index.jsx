@@ -52,7 +52,7 @@ function HomePage() {
     <S.HomeWrapper>
       <Row gutter={[16, 16]}>
         <Col span={8}>
-          <Card title="Bộ lọc" size="small">
+          <Card title="Danh Mục Sản Phẩm" size="small">
             <Checkbox.Group onChange={(values) => handleChangeCategory(values)}>
               {renderCategoryItems}
             </Checkbox.Group>

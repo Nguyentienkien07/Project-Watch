@@ -1,8 +1,8 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const HeaderWrapper = styled.div`
-  background-color: #d3d3d3;
-`
+  background-color: #353535;
+`;
 
 export const HeaderContainer = styled.div`
   display: flex;
@@ -12,4 +12,16 @@ export const HeaderContainer = styled.div`
   max-width: 1000px;
   width: 100%;
   padding: 8px 16px;
-`
+
+  .logo {
+    display: inline-flex;
+  }
+  .image {
+    width: 70px;
+    height: 70px;
+  }
+  .logo h3 {
+    margin: auto 15px;
+    color: white;
+  }
+`;

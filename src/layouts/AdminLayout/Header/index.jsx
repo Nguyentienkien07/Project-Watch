@@ -1,19 +1,21 @@
-import { Button, Space } from 'antd'
-import { useSelector, useDispatch } from 'react-redux'
+import { Button, Space } from "antd";
+import { useSelector, useDispatch } from "react-redux";
 
-import { toggleAdminSidebar } from '../../../redux/slicers/common.slice'
-import * as S from './styles'
+import { toggleAdminSidebar } from "../../../redux/slicers/common.slice";
+import * as S from "./styles";
 
 function Header() {
-  const { isShowAdminSidebar } = useSelector((state) => state.common)
+  const { isShowAdminSidebar } = useSelector((state) => state.common);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   return (
     <S.HeaderWrapper>
       <S.HeaderContainer>
         <Space size={24}>
-          <Button onClick={() => dispatch(toggleAdminSidebar(!isShowAdminSidebar))}>
+          <Button
+            onClick={() => dispatch(toggleAdminSidebar(!isShowAdminSidebar))}
+          >
             Menu left
           </Button>
           <div>Logo</div>
@@ -21,7 +23,7 @@ function Header() {
         <div>Avatar</div>
       </S.HeaderContainer>
     </S.HeaderWrapper>
-  )
+  );
 }
 
-export default Header
+export default Header;
