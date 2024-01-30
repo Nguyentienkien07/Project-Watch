@@ -1,19 +1,21 @@
-import { configureStore } from '@reduxjs/toolkit'
-import createSagaMiddleware from 'redux-saga'
+import { configureStore } from "@reduxjs/toolkit";
+import createSagaMiddleware from "redux-saga";
 
-import productReducer from './redux/slicers/product.slice'
-import categoryReducer from './redux/slicers/category.slice'
-import taskReducer from './redux/slicers/task.slice'
-import commonReducer from './redux/slicers/common.slice'
+import productReducer from "./redux/slicers/product.slice";
+import categoryReducer from "./redux/slicers/category.slice";
+import typeReducer from "./redux/slicers/type.slice";
+import taskReducer from "./redux/slicers/task.slice";
+import commonReducer from "./redux/slicers/common.slice";
 
-import rootSaga from './redux/sagas'
+import rootSaga from "./redux/sagas";
 
-const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware();
 
 const store = configureStore({
   reducer: {
     product: productReducer,
     category: categoryReducer,
+    type: typeReducer,
     task: taskReducer,
     common: commonReducer,
   },
@@ -24,8 +26,8 @@ const store = configureStore({
     }),
     sagaMiddleware,
   ],
-})
+});
 
-sagaMiddleware.run(rootSaga)
+sagaMiddleware.run(rootSaga);
 
-export default store
+export default store;

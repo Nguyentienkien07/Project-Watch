@@ -12,11 +12,12 @@ import {
 
 function* getProductListSaga(action) {
   try {
-    const { categoryId, page, keyword, priceOrder, limit, more } =
+    const { categoryId, typeId, page, keyword, priceOrder, limit, more } =
       action.payload;
     const result = yield axios.get("http://localhost:4000/products", {
       params: {
         categoryId: categoryId,
+        typeId: typeId,
         ...(priceOrder && {
           _sort: "price",
           _order: priceOrder,

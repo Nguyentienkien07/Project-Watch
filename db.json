@@ -6,6 +6,7 @@
       "name": "Hublot 1",
       "price": 25000000,
       "categoryId": 1,
+      "typeId": 2,
       "image": "https://bossluxurywatch.vn/uploads/san-pham/hublot/classic-fusion/2/hublot-classic-fusion-titanium-42mm-542-nx-1171-rx.png"
     },
     {
@@ -13,6 +14,7 @@
       "name": "Rolex 1",
       "price": 20000000,
       "categoryId": 2,
+      "typeId": 2,
       "image": "https://rolex.dafc.com.vn/wp-content/uploads/2023/05/m126234-0051_collection_upright_landscape.png"
     },
     {
@@ -20,6 +22,7 @@
       "name": "Hublot 2",
       "price": 15000000,
       "categoryId": 1,
+      "typeId": 2,
       "image": "https://bossluxurywatch.vn/uploads/san-pham/hublot/big-bang/dong-ho-hublot-big-bang-tourbillon-sr-a-by-samuel-ross-44mm-428-nx-0101-rx-sra23.png"
     },
     {
@@ -27,6 +30,7 @@
       "name": "Hublot 3",
       "price": 18000000,
       "categoryId": 1,
+      "typeId": 2,
       "image": "https://frodos.com.vn/wp-content/uploads/2021/03/T11-1-scaled.jpg"
     },
     {
@@ -34,6 +38,7 @@
       "name": "Hublot 4",
       "price": 30000000,
       "categoryId": 1,
+      "typeId": 2,
       "image": "https://www.thehourglass.com/vn/wp-content/uploads/sites/22/2020/07/614.OX_.1180.RX_.jpg"
     },
     {
@@ -41,6 +46,7 @@
       "name": "Hublot 5",
       "price": 12000000,
       "categoryId": 1,
+      "typeId": 2,
       "image": "https://authenticluxury.vn/wp-content/uploads/2023/08/hublot-big-bang-unico-white-cera.png"
     },
     {
@@ -48,6 +54,7 @@
       "name": "Casio 1",
       "price": 12000000,
       "categoryId": 3,
+      "typeId": 1,
       "image": "https://cdn.tgdd.vn/Products/Images/7264/199522/casio-la680wa-7df-bac-1-org.jpg"
     },
     {
@@ -55,6 +62,7 @@
       "name": "Rolex 2",
       "price": 12000000,
       "categoryId": 2,
+      "typeId": 1,
       "image": "https://frodos.com.vn/wp-content/uploads/2021/04/ROLEX-DATEJUST-31-278383RBR-6-scaled.jpg"
     },
     {
@@ -62,6 +70,7 @@
       "name": "Casio 2",
       "price": 12000000,
       "categoryId": 3,
+      "typeId": 1,
       "image": "https://cdn.tgdd.vn/Products/Images/7264/199508/casio-a158wa-1df-bac-1-2-org.jpg"
     },
     {
@@ -69,6 +78,7 @@
       "name": "Orient 1",
       "price": 12000000,
       "categoryId": 4,
+      "typeId": 2,
       "image": "https://orientvietnam.vn/wp-content/uploads/2022/06/RA-AG0003S10B-000.jpg"
     },
     {
@@ -76,6 +86,7 @@
       "name": "Rolex 3",
       "price": 12000000,
       "categoryId": 2,
+      "typeId": 2,
       "image": "https://rolex.dafc.com.vn/wp-content/uploads/2023/05/m128238-0008_collection_upright_landscape.png"
     }
   ],
@@ -95,6 +106,24 @@
     {
       "id": 4,
       "name": "Orient"
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "name": "Dây kim loại"
+    },
+    {
+      "id": 2,
+      "name": "Dây da"
+    },
+    {
+      "id": 3,
+      "name": "Dây vải"
+    },
+    {
+      "id": 4,
+      "name": "Dây nhựa"
     }
   ],
   "tasks": []
