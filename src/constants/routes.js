@@ -1,21 +1,27 @@
 export const ROUTES = {
-  LOGIN: '/login',
-  REGISTER: '/register',
+  LOGIN: "/login",
+  REGISTER: "/register",
   USER: {
-    HOME: '/',
-    ABOUT: '/about',
-    CONTACT: '/contact',
-    PRODUCT_LIST: '/products',
-    PRODUCT_DETAIL: '/products/:id',
-    CART: '/cart',
-    CHECKOUT: '/checkout',
-    TO_DO_LIST: '/to-do-list',
+    HOME: "/",
+    CONTACT: "/contact",
+    PRODUCT_LIST: "/products",
+    PRODUCT_DETAIL: "/products/:id",
+    CART: "/cart",
+    CHECKOUT: "/checkout",
+    PAYMENT_SUCCESS: "/paymentSuccess",
+
+    // profile
+    PROFILE: "/profile",
+    USER_INFO: "/profile/user-info",
+    ORDER_HISTORY: "/profile/order-history",
+    FAVORITE_PRODUCT: "/profile/favorite-products",
+    CHANGE_PASSWORD: "/profile/change-password",
   },
   ADMIN: {
-    DASHBOARD: '/admin/dashboard',
-    PRODUCT_MANAGE: '/admin/products',
-    CREATE_PRODUCT: '/admin/products/create',
-    UPDATE_PRODUCT: '/admin/products/:id/update',
-    USER_MANAGE: '/admin/users',
+    DASHBOARD: "/admin/dashboard",
+    PRODUCT_MANAGE: "/admin/products",
+    CREATE_PRODUCT: "/admin/products/create",
+    UPDATE_PRODUCT: "/admin/products/:id/update",
+    USER_MANAGE: "/admin/users",
   },
-}
+};

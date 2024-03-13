@@ -1,17 +1,18 @@
 import styled from "styled-components";
 
 export const FooterWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #353535;
+  background-color: #131414;
   padding: 16px;
+
   color: white;
 `;
 export const FooterContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  margin: 0 auto;
+  max-width: 1232px;
+
   padding: 16px;
 
   .container {
@@ -22,7 +23,7 @@ export const FooterContainer = styled.div`
   }
   .container .title-shop {
     font-size: 35px;
-    color: red;
+    color: #a4afe3;
   }
   .container .content {
     padding-top: 15px;
