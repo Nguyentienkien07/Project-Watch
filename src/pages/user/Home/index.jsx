@@ -46,7 +46,7 @@ function HomePage() {
         <Col key={index} style={{ textAlign: "center" }}>
           <Link to={generatePath(ROUTES.USER.PRODUCT_DETAIL, { id: item.id })}>
             <Card
-              // style={{ height: "auto", width: "200px" }}
+              hoverable
               style={{ width: "240px" }}
               size="small"
               cover={

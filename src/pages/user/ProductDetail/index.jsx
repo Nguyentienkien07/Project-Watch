@@ -199,6 +199,40 @@ const ProductDetailPage = () => {
 
   return (
     <S.ProductDetailWrapper>
+      <Breadcrumb
+        items={[
+          {
+            title: (
+              <Link to={ROUTES.USER.HOME}>
+                <Space>
+                  <HomeOutlined />
+                  <span>Trang chủ</span>
+                </Space>
+              </Link>
+            ),
+          },
+          {
+            title: (
+              <Link to={ROUTES.USER.PRODUCT_LIST}>Danh sách sản phẩm</Link>
+            ),
+          },
+          {
+            title: (
+              <Link
+                to={`${ROUTES.USER.PRODUCT_LIST}?${qs.stringify({
+                  categoryId: [productDetail.data.categoryId],
+                })}`}
+              >
+                {productDetail.data.category?.name}
+              </Link>
+            ),
+          },
+          {
+            title: productDetail.data.name,
+          },
+        ]}
+        style={{ marginBottom: 8 }}
+      />
       <Card size="small" bordered={false}>
         <Row gutter={[16, 16]}>
           <Col md={8} sm={24}>
@@ -211,33 +245,8 @@ const ProductDetailPage = () => {
           </Col>
           <Col md={14} sm={24}>
             <p size="sm">{productDetail.data.category?.name}</p>
-            <h1>{productDetail.data.name}</h1>
-            <Space>
-              <Rate value={productRate} allowHalf disabled />
-              <span>{`(${
-                productRate ? `${productRate} sao` : "Chưa có đánh giá"
-              })`}</span>
-            </Space>
-            <h3 style={{ color: "#006363" }}>
-              {productDetail.data.price?.toLocaleString()} ₫
-            </h3>
-            <div style={{ margin: "8px 0" }}>
-              <InputNumber
-                value={quantity}
-                min={1}
-                onChange={(value) => setQuantity(value)}
-              />
-            </div>
-            <Space>
-              <Button
-                style={{ backgroundColor: "#ffc069" }}
-                size="large"
-                type="primary"
-                icon={<ShoppingCartOutlined />}
-                onClick={() => handleAddToCart()}
-              >
-                Add to cart
-              </Button>
+            <Space style={{ display: "flex" }}>
+              <h1>{productDetail.data.name}</h1>
               <Button
                 size="large"
                 type="text"
@@ -253,12 +262,61 @@ const ProductDetailPage = () => {
               ></Button>
               <p>{productDetail.data?.favorites?.length || 0} Lượt thích</p>
             </Space>
+            <Space>
+              <Rate value={productRate} allowHalf disabled />
+              <span>{`(${
+                productRate ? `${productRate} sao` : "Chưa có đánh giá"
+              })`}</span>
+            </Space>
+            <div style={{ display: "flex" }}>
+              <h4 style={{ paddingRight: "10px" }}>Giá: </h4>
+              <h4 style={{ color: "#f5222d" }}>
+                {productDetail.data.price?.toLocaleString()} ₫
+              </h4>
+            </div>
+            <div style={{ margin: "8px 0", display: "flex" }}>
+              <h4 style={{ paddingRight: "10px" }}>Số lượng:</h4>
+              <InputNumber
+                value={quantity}
+                min={1}
+                onChange={(value) => setQuantity(value)}
+              />
+            </div>
+            <div style={{ display: "flex" }}>
+              <h4 style={{ paddingRight: "10px" }}>Tình trạng: </h4>
+              <h4 style={{ color: "#f5222d" }}>Còn hàng</h4>
+            </div>
+            <div style={{ margin: "10px 0" }}>
+              <h3>Thông tin thêm:</h3>
+              <div style={{ borderTop: "1px solid #ccc" }}></div>
+              <h3 style={{ color: "#ffc069" }}>
+                Cam kết tất cả sản phẩm bán ra là chính Hãng 100%. Bảo hành từ 2
+                đến 5 năm theo đúng tiêu chuẩn của hãng. Tặng gói Spa miễn phí 2
+                năm trị giá 3.000.000 đồng. Giao hàng toàn quốc, hỗ trợ 24/7 về
+                chất lượng sản phẩm. Với K-WATCH chữ tín luôn đặt lên hàng đầu
+              </h3>
+            </div>
+            <Space>
+              <Button
+                style={{ backgroundColor: "#b80a0a" }}
+                size="large"
+                type="primary"
+                icon={<ShoppingCartOutlined />}
+                onClick={() => handleAddToCart()}
+              >
+                Thêm vảo giỏ
+              </Button>
+            </Space>
           </Col>
         </Row>
       </Card>
       <Row gutter={[16, 16]} style={{ marginTop: 16 }}>
         <Col xs={24} md={16}>
-          <Card size="small" title="Thông tin sản phẩm" bordered={false}>
+          <Card
+            size="small"
+            title={<h3 style={{ color: "Black" }}>Thông tin sản phẩm</h3>}
+            bordered={false}
+          >
             <div
               dangerouslySetInnerHTML={{ __html: productDetail.data.content }}
             ></div>
@@ -274,7 +332,11 @@ const ProductDetailPage = () => {
           </Card>
         </Col>
         <Col xs={24} md={8}>
-          <Card size="small" title="Cấu hình" bordered={false}>
+          <Card
+            size="small"
+            title={<h3 style={{ color: "Black" }}>Thông số kỹ thuật</h3>}
+            bordered={false}
+          >
             <div
               dangerouslySetInnerHTML={{
                 __html: productDetail.data.configuration,
