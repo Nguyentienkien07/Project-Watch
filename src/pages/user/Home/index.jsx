@@ -60,7 +60,7 @@ function HomePage() {
               }
             >
               <h2 style={{ textAlign: "center" }}>{item.name}</h2>
-              <h3 style={{ textAlign: "center" }}>
+              <h3 style={{ textAlign: "center", color: "#ffa940" }}>
                 {item.price.toLocaleString()} ₫
               </h3>
             </Card>

@@ -1,5 +1,6 @@
-import { Dropdown, Space, Button, Badge, Popover, Avatar } from "antd";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect, useMemo } from "react";
+import { Dropdown, Space, Button, Badge, Popover, Avatar, Menu } from "antd";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
   LogoutOutlined,
@@ -12,11 +13,13 @@ import qs from "qs";
 
 import { ROUTES } from "constants/routes";
 import { logoutRequest } from "../../../redux/slicers/auth.slice";
+import { getCategoryListRequest } from "../../../redux/slicers/category.slice";
 
 import * as S from "./styles";
 
 function Header() {
   const { userInfo } = useSelector((state) => state.auth);
+  const { categoryList } = useSelector((state) => state.category);
   const { cartList } = useSelector((state) => state.cart);
 
   const handleChange = (value) => {
@@ -25,6 +28,10 @@ function Header() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCategoryListRequest());
+  }, []);
 
   const renderCartContent = (
     <div>
@@ -49,6 +56,31 @@ function Header() {
       ))}
     </div>
   );
+
+  const renderDropDowLink = useMemo(() => {
+    return categoryList.data.map((item) => {
+      return (
+        <S.DropDow>
+          <Menu.Item key={item.id}>
+            <Link
+              to={{
+                pathname: ROUTES.USER.PRODUCT_LIST,
+                search: qs.stringify({
+                  categoryId: [item.id],
+                }),
+              }}
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              {item.name}
+            </Link>
+          </Menu.Item>
+        </S.DropDow>
+      );
+    });
+  }, [categoryList.data]);
+
+  const dropdownMenu = <Menu>{renderDropDowLink}</Menu>;
+
   return (
     <S.HeaderWrapper>
       <S.HeaderContainer>
@@ -64,32 +96,7 @@ function Header() {
           </div>
         </Link>
 
-        <Dropdown
-          menu={{
-            items: [
-              {
-                key: "1",
-                label: "Hublot",
-                onClick: () => navigate(ROUTES.USER.PRODUCT_LIST),
-              },
-              {
-                key: "2",
-                label: "Rolex",
-                onClick: () => navigate(ROUTES.USER.PRODUCT_LIST),
-              },
-              {
-                key: "4",
-                label: "Franck Muller",
-                onClick: () => navigate(ROUTES.USER.PRODUCT_LIST),
-              },
-              {
-                key: "4",
-                label: "Richard Mille",
-                onClick: () => navigate(ROUTES.USER.PRODUCT_LIST),
-              },
-            ],
-          }}
-        >
+        <Dropdown overlay={dropdownMenu} trigger={["hover"]}>
           <h4 style={{ cursor: "pointer" }}>Thương hiệu</h4>
         </Dropdown>
 
@@ -122,7 +129,8 @@ function Header() {
                   icon={<UserOutlined />}
                 />
               )}
-              <Dropdown
+
+              {/* <Dropdown
                 menu={{
                   items: [
                     {
@@ -151,6 +159,50 @@ function Header() {
                 }}
               >
                 <h3 style={{ color: "#e7e8f4" }}>{userInfo.data.fullName}</h3>
+              </Dropdown> */}
+              <Dropdown
+                overlay={
+                  <Menu>
+                    <S.DropDow>
+                      <Menu.Item
+                        key="1"
+                        icon={<DashboardOutlined />}
+                        onClick={() => navigate(ROUTES.ADMIN.DASHBOARD)}
+                        style={{
+                          display:
+                            userInfo.data.role === "admin" ? "block" : "none",
+                        }}
+                      >
+                        Dashboard
+                      </Menu.Item>
+                    </S.DropDow>
+                    <S.DropDow>
+                      <Menu.Item
+                        key="2"
+                        icon={<UserOutlined />}
+                        onClick={() => navigate(ROUTES.USER.PROFILE)}
+                      >
+                        Thông tin cá nhân
+                      </Menu.Item>
+                    </S.DropDow>
+                    <S.DropDow>
+                      <Menu.Item
+                        key="3"
+                        icon={<LogoutOutlined />}
+                        onClick={() => dispatch(logoutRequest())}
+                      >
+                        Đăng xuất
+                      </Menu.Item>
+                    </S.DropDow>
+                  </Menu>
+                }
+              >
+                <h3
+                  className="fullName"
+                  style={{ color: "#e7e8f4", cursor: "pointer" }}
+                >
+                  {userInfo.data.fullName}
+                </h3>
               </Dropdown>
             </Space>
           ) : (

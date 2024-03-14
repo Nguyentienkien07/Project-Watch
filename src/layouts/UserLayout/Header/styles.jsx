@@ -46,3 +46,8 @@ export const AvatarPreview = styled.img`
   border-radius: 50%;
   object-fit: cover;
 `;
+export const DropDow = styled.h4`
+  &:hover {
+    background-color: #ffa940;
+  }
+`;

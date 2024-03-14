@@ -1,32 +1,32 @@
-import { useMemo } from 'react'
-import { Navigate, Link, Outlet, useLocation } from 'react-router-dom'
-import { Card, Row, Col, Breadcrumb, Space, notification } from 'antd'
-import { useSelector, useDispatch } from 'react-redux'
-import { CameraOutlined, UserOutlined, HomeOutlined } from '@ant-design/icons'
+import { useMemo } from "react";
+import { Navigate, Link, Outlet, useLocation } from "react-router-dom";
+import { Card, Row, Col, Breadcrumb, Space, notification } from "antd";
+import { useSelector, useDispatch } from "react-redux";
+import { CameraOutlined, UserOutlined, HomeOutlined } from "@ant-design/icons";
 
-import { ROUTES } from 'constants/routes'
-import { convertImageToBase64 } from 'utils/file'
-import { PROFILE_MENU } from './constants'
+import { ROUTES } from "constants/routes";
+import { convertImageToBase64 } from "utils/file";
+import { PROFILE_MENU } from "./constants";
 
-import { changeAvatarRequest } from '../../redux/slicers/auth.slice'
+import { changeAvatarRequest } from "../../redux/slicers/auth.slice";
 
-import * as S from './styles'
+import * as S from "./styles";
 
 function Profile() {
-  const { pathname } = useLocation()
-  const dispatch = useDispatch()
+  const { pathname } = useLocation();
+  const dispatch = useDispatch();
 
-  const { userInfo } = useSelector((state) => state.auth)
+  const { userInfo } = useSelector((state) => state.auth);
 
-  const accessToken = localStorage.getItem('accessToken')
+  const accessToken = localStorage.getItem("accessToken");
 
   const handleChangeAvatar = async (e) => {
-    const file = e.target.files[0]
-    if (!file) return
-    if (!['image/jpeg', 'image/jpg', 'image/png'].includes(file.type)) {
-      return notification.error({ message: 'File không đúng định dạng' })
+    const file = e.target.files[0];
+    if (!file) return;
+    if (!["image/jpeg", "image/jpg", "image/png"].includes(file.type)) {
+      return notification.error({ message: "File không đúng định dạng" });
     }
-    const imgBase64 = await convertImageToBase64(file)
+    const imgBase64 = await convertImageToBase64(file);
     await dispatch(
       changeAvatarRequest({
         id: userInfo.data.id,
@@ -34,30 +34,30 @@ function Profile() {
           avatar: imgBase64,
         },
       })
-    )
-  }
+    );
+  };
 
   const renderProfileMenu = useMemo(() => {
     return PROFILE_MENU.map((item, index) => {
       return (
-        <Link to={item.path} key={index} style={{ color: 'black' }}>
+        <Link to={item.path} key={index} style={{ color: "black" }}>
           <S.ProfileMenuItem active={item.path === pathname}>
             <div>{item.icon}</div>
             <p style={{ marginLeft: 12 }}>{item.label}</p>
           </S.ProfileMenuItem>
         </Link>
-      )
-    })
-  }, [pathname])
+      );
+    });
+  }, [pathname]);
 
   const profileLabel = useMemo(() => {
-    return PROFILE_MENU.find((item) => item.path === pathname)?.label
-  }, [pathname])
+    return PROFILE_MENU.find((item) => item.path === pathname)?.label;
+  }, [pathname]);
 
   if (accessToken && userInfo.loading) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   } else if (!userInfo.data.id) {
-    return <Navigate to={ROUTES.USER.HOME} />
+    return <Navigate to={ROUTES.USER.HOME} />;
   }
   return (
     <S.ProfileWrapper>
@@ -70,6 +70,13 @@ function Profile() {
                   <HomeOutlined />
                   <span>Trang chủ</span>
                 </Space>
+              </Link>
+            ),
+          },
+          {
+            title: (
+              <Link to={ROUTES.USER.PROFILE}>
+                <span>Trang cá nhân</span>
               </Link>
             ),
           },
@@ -96,10 +103,15 @@ function Profile() {
                   </label>
                 </S.AvatarEdit>
                 {userInfo.data.avatar ? (
-                  <S.AvatarPreview src={userInfo.data.avatar} alt="User profile picture" />
+                  <S.AvatarPreview
+                    src={userInfo.data.avatar}
+                    alt="User profile picture"
+                  />
                 ) : (
                   <S.AvatarDefaultWrapper>
-                    <S.AvatarDefaultContainer icon={<UserOutlined style={{ fontSize: 36 }} />} />
+                    <S.AvatarDefaultContainer
+                      icon={<UserOutlined style={{ fontSize: 36 }} />}
+                    />
                   </S.AvatarDefaultWrapper>
                 )}
               </S.AvatarUpload>
@@ -116,7 +128,7 @@ function Profile() {
         </Col>
       </Row>
     </S.ProfileWrapper>
-  )
+  );
 }
 
-export default Profile
+export default Profile;
